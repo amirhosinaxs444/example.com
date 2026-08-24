@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goodarzi Herbal Shop | عطاری گودرزی</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink: #15130D;
+    --ink-2: #1D1A12;
+    --ink-3: #262117;
+    --paper: #F3ECD9;
+    --paper-dim: #E4DAC0;
+    --line: rgba(243,236,217,0.14);
+    --line-dark: rgba(31,42,29,0.12);
+    --sage: #8CA07C;
+    --clay: #B24B32;
+    --gold: #C79A3E;
+    --ruby: #C0334A;
+    --plum: #6E4E8F;
+    --muted: #8C8368;
+    --radius: 16px;
+    --ff-display: 'Vazirmatn', sans-serif;
+    --ff-mono: 'JetBrains Mono', monospace;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--ff-display); background:var(--paper); color:var(--ink);
+    line-height:1.7; overflow-x:hidden;
+  }
+  img{ max-width:100%; display:block; }
+  a{ text-decoration:none; color:inherit; }
+  button{ font-family:inherit; border:none; background:none; cursor:pointer; color:inherit; }
+  .container{ max-width:1120px; margin:0 auto; padding:0 24px; }
+  ::selection{ background:var(--clay); color:var(--paper); }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- Nav ---------- */
+  nav{ position:sticky; top:0; z-index:100; background:rgba(21,19,13,0.94); backdrop-filter:blur(10px); border-bottom:2px solid var(--gold); }
+  .nav-row{ display:flex; align-items:center; justify-content:space-between; height:72px; }
+  .logo{ display:flex; align-items:center; gap:10px; color:var(--paper); }
+  .logo-seal{ width:34px; height:34px; }
+  .logo-text{ font-weight:800; font-size:1.2rem; letter-spacing:-0.01em; }
+  .logo-text .en{ display:block; font-family:var(--ff-mono); font-size:0.6rem; font-weight:400; color:var(--gold); letter-spacing:.12em; }
+  .nav-links{ display:flex; gap:34px; color:var(--paper-dim); font-size:0.92rem; }
+  .nav-links a:hover{ color:var(--gold); }
+  .nav-right{ display:flex; align-items:center; gap:14px; }
+  .cart-btn{
+    position:relative; width:42px; height:42px; border-radius:50%;
+    background:var(--ink-3); border:1px solid var(--line); color:var(--paper);
+    display:flex; align-items:center; justify-content:center; transition:border-color .2s ease;
+  }
+  .cart-btn:hover{ border-color:var(--gold); }
+  .cart-count{
+    position:absolute; top:-4px; left:-4px; background:var(--clay); color:var(--paper);
+    font-family:var(--ff-mono); font-size:0.65rem; font-weight:700; min-width:18px; height:18px;
+    border-radius:50%; display:flex; align-items:center; justify-content:center; padding:0 3px;
+  }
+  .nav-cta{
+    background:var(--gold); color:var(--ink); font-weight:700; font-size:0.85rem;
+    padding:10px 20px; border-radius:100px; transition:transform .15s ease;
+  }
+  .nav-cta:hover{ transform:translateY(-2px); }
+  @media (max-width:860px){ .nav-links{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .hero{ position:relative; padding:90px 0 70px; overflow:hidden; }
+  .hero::before{
+    content:''; position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 700px 420px at 85% 0%, rgba(199,154,62,0.16), transparent 60%),
+      radial-gradient(ellipse 500px 360px at 60% 100%, rgba(110,78,143,0.12), transparent 60%),
+      radial-gradient(ellipse 600px 400px at 5% 90%, rgba(140,160,124,0.18), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-grid{ display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center; position:relative; }
+  @media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; } }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:10px; font-family:var(--ff-mono); font-size:0.78rem;
+    color:var(--gold); letter-spacing:.08em; margin-bottom:18px;
+  }
+  .eyebrow::before{ content:''; width:24px; height:1px; background:var(--gold); }
+  .hero h1{
+    font-size:clamp(2.2rem,4.6vw,3.4rem); font-weight:800; line-height:1.25; letter-spacing:-0.01em; margin-bottom:22px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--clay); }
+  .hero p{ font-size:1.05rem; color:#4A5540; max-width:480px; margin-bottom:32px; }
+  .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{ padding:15px 28px; border-radius:100px; font-weight:700; font-size:0.92rem; transition:transform .15s ease; }
+  .btn-primary{ background:var(--clay); color:var(--paper); }
+  .btn-primary:hover{ transform:translateY(-2px); }
+  .btn-ghost{ border:1.5px solid var(--ink); color:var(--ink); }
+  .btn-ghost:hover{ background:var(--ink); color:var(--paper); }
+
+  .hero-seal{
+    position:relative; aspect-ratio:1; border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, #3A4B32, var(--ink) 70%);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 30px 60px rgba(31,42,29,0.25);
+  }
+  .hero-seal::before{
+    content:''; position:absolute; inset:14px; border-radius:50%; border:1.5px dashed rgba(199,154,62,0.4);
+  }
+  .hero-seal svg{ width:56%; height:56%; }
+
+  /* ---------- Sections ---------- */
+  section{ padding:90px 0; }
+  .section-head{ text-align:center; max-width:560px; margin:0 auto 52px; }
+  .section-head h2{ font-size:clamp(1.7rem,3vw,2.3rem); font-weight:800; margin-top:10px; }
+  .section-head p{ color:#4A5540; margin-top:14px; font-size:0.98rem; }
+
+  /* ---------- Products ---------- */
+  .products{ background:var(--ink); color:var(--paper); border-top:3px solid var(--gold); border-bottom:3px solid var(--gold); }
+  .products .section-head p{ color:var(--paper-dim); }
+  .products-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:22px; }
+  .p-card{
+    background:var(--ink-2); border:1px solid var(--line); border-radius:var(--radius);
+    overflow:hidden; transition:transform .3s ease, border-color .3s ease;
+  }
+  .p-card:hover{ transform:translateY(-5px); border-color:rgba(199,154,62,0.4); }
+  .p-media{
+    aspect-ratio:1; display:flex; align-items:center; justify-content:center; position:relative;
+    background:
+      radial-gradient(circle at 30% 20%, rgba(199,154,62,0.16), transparent 55%),
+      var(--ink-3);
+  }
+  .p-media .icon{ width:56%; height:56%; color:var(--gold); opacity:0.9; }
+  .p-tag{
+    position:absolute; top:10px; right:10px; background:var(--clay); color:var(--paper);
+    font-size:0.68rem; font-weight:700; padding:4px 10px; border-radius:100px;
+  }
+  .p-tag.special{ background:var(--plum); }
+  .p-body{ padding:18px 18px 20px; }
+  .p-cat{ font-family:var(--ff-mono); font-size:0.68rem; color:var(--gold); letter-spacing:.05em; margin-bottom:6px; }
+  .p-name{ font-size:0.98rem; font-weight:700; margin-bottom:10px; min-height:2.6em; }
+  .p-price{ font-family:var(--ff-mono); font-size:0.9rem; color:var(--paper); margin-bottom:14px; }
+  .p-add{
+    width:100%; background:var(--gold); color:var(--ink); font-weight:700; font-size:0.82rem;
+    padding:10px; border-radius:100px; transition:transform .15s ease, background .2s ease;
+  }
+  .p-add:hover{ transform:translateY(-2px); }
+  .p-add.added{ background:var(--sage); }
+
+  /* ---------- Boss fight game ---------- */
+  .game-wrap{ max-width:520px; margin:0 auto; }
+  .game-card{
+    background:var(--ink-2); border:1px solid var(--line-dark); border-radius:24px; padding:30px 24px;
+    background:var(--ink); color:var(--paper); box-shadow:0 24px 60px rgba(31,42,29,0.18);
+  }
+  .game-stats{ display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; }
+  .game-card.shake{ animation:gcShake .3s ease; }
+  @keyframes gcShake{ 10%,90%{transform:translateX(-1px);} 20%,80%{transform:translateX(3px);} 30%,50%,70%{transform:translateX(-5px);} 40%,60%{transform:translateX(5px);} }
+  .game-combo{ font-family:var(--ff-mono); font-size:0.78rem; color:var(--ruby); text-align:center; min-height:1.2em; margin-bottom:6px; }
+  .dmg-pop.crit{ color:var(--ruby); font-size:1.4rem; }
+  .game-level{ font-family:var(--ff-mono); font-size:0.85rem; color:var(--gold); }
+  .game-level b{ font-size:1.3rem; color:var(--paper); }
+  .game-lives{ display:flex; gap:6px; }
+  .life-dot{ width:14px; height:14px; border-radius:50%; background:var(--clay); }
+  .life-dot.lost{ background:var(--line); }
+
+  .monster-stage{
+    position:relative; height:220px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px; cursor:pointer; user-select:none; touch-action:manipulation;
+  }
+  .monster{ width:150px; height:150px; transition:transform .08s ease; }
+  .monster.hit{ animation: monsterHit .25s ease; }
+  @keyframes monsterHit{
+    0%{ transform:scale(1); } 30%{ transform:scale(0.9) rotate(-3deg); } 100%{ transform:scale(1); }
+  }
+  .monster.defeated{ animation: monsterDefeat .5s ease forwards; }
+  @keyframes monsterDefeat{ to{ transform:scale(0) rotate(25deg); opacity:0; } }
+  .dmg-pop{
+    position:absolute; font-family:var(--ff-mono); font-weight:700; color:var(--gold); font-size:1.1rem;
+    animation: dmgFloat .6s ease forwards; pointer-events:none;
+  }
+  @keyframes dmgFloat{ from{ opacity:1; transform:translateY(0); } to{ opacity:0; transform:translateY(-40px); } }
+
+  .hp-bar{ height:10px; border-radius:100px; background:var(--ink-3); overflow:hidden; margin-bottom:8px; }
+  .hp-fill{ height:100%; background:linear-gradient(90deg, var(--clay), var(--gold)); transition:width .2s ease; }
+  .hp-label{ text-align:center; font-family:var(--ff-mono); font-size:0.72rem; color:var(--paper-dim); margin-bottom:20px; }
+
+  .game-msg{ text-align:center; font-weight:700; font-size:0.95rem; min-height:1.6em; margin-bottom:8px; }
+  .game-msg.win{ color:var(--gold); }
+  .game-msg.lose{ color:var(--clay); }
+
+  .reward-panel{ margin-top:18px; display:flex; flex-direction:column; gap:10px; }
+  .reward-card{
+    display:flex; justify-content:space-between; align-items:center; gap:10px;
+    background:var(--ink-3); border:1px dashed rgba(199,154,62,0.4); border-radius:12px; padding:12px 16px;
+    opacity:0.35;
+  }
+  .reward-card.unlocked{ opacity:1; }
+  .reward-card .rt{ font-size:0.82rem; }
+  .reward-card .rt b{ display:block; font-size:0.72rem; color:var(--paper-dim); font-weight:400; margin-top:2px; }
+  .reward-code{ font-family:var(--ff-mono); font-weight:700; background:var(--gold); color:var(--ink); padding:6px 12px; border-radius:8px; font-size:0.85rem; }
+  .reward-code.tier2{ background:var(--plum); color:var(--paper); }
+  .reward-code.locked{ background:var(--line); color:var(--paper-dim); }
+  .reward-code.used{ background:var(--line); color:var(--paper-dim); font-family:var(--ff-display); font-weight:400; font-size:0.76rem; }
+  .reward-code-wrap{ display:flex; align-items:center; gap:6px; }
+  .reward-copy{ width:26px; height:26px; border-radius:50%; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .reward-copy:hover{ background:rgba(255,255,255,0.22); }
+
+  /* ---------- Why us ---------- */
+  .why-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  @media (max-width:760px){ .why-grid{ grid-template-columns:1fr; } }
+  .why-card{ background:#EAE1C7; border-radius:var(--radius); padding:30px 26px; border:1px solid var(--line-dark); transition:transform .3s ease; }
+  .why-card:hover{ transform:translateY(-5px); }
+  .why-card .icon{
+    width:44px; height:44px; border-radius:50%; background:rgba(178,75,50,0.12);
+    display:flex; align-items:center; justify-content:center; margin-bottom:16px; color:var(--clay);
+  }
+  .why-card .icon svg{ width:22px; height:22px; }
+  .why-card h3{ font-size:1.05rem; margin-bottom:8px; }
+  .why-card p{ font-size:0.88rem; color:#5A6350; }
+
+  /* ---------- Testimonial ---------- */
+  .testimonial{ background:var(--ink); color:var(--paper); text-align:center; padding:100px 0; position:relative; border-top:1px solid rgba(199,154,62,0.3); }
+  .testimonial::before{
+    content:'"'; position:absolute; top:30px; left:50%; transform:translateX(-50%);
+    font-size:8rem; font-weight:800; color:rgba(243,236,217,0.06); line-height:1;
+  }
+  .testimonial blockquote{ font-size:clamp(1.2rem,2.4vw,1.7rem); font-weight:600; max-width:720px; margin:0 auto 22px; line-height:1.6; }
+  .testimonial .who{ font-family:var(--ff-mono); color:var(--gold); font-size:0.85rem; }
+
+  /* ---------- CTA ---------- */
+  .cta{ text-align:center; position:relative; overflow:hidden; }
+  .cta-box{
+    max-width:640px; margin:0 auto; background:linear-gradient(160deg, #2E3C29, var(--ink));
+    border-radius:28px; padding:60px 40px; color:var(--paper); position:relative; overflow:hidden;
+  }
+  .cta-box::before{
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 50% 0%, rgba(199,154,62,0.2), transparent 60%);
+  }
+  .cta-box h2{ font-size:clamp(1.5rem,3vw,2.1rem); font-weight:800; margin-bottom:14px; position:relative; }
+  .cta-box p{ color:var(--paper-dim); margin-bottom:26px; position:relative; }
+
+  /* ---------- Footer ---------- */
+  footer{ background:var(--ink); color:var(--paper-dim); padding:50px 0 30px; border-top:3px solid var(--gold); }
+  .footer-row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; }
+  .footer-links{ display:flex; gap:24px; font-size:0.85rem; flex-wrap:wrap; }
+  .footer-links a:hover{ color:var(--gold); }
+  .footer-bottom{
+    margin-top:34px; padding-top:20px; border-top:1px solid var(--line);
+    font-family:var(--ff-mono); font-size:0.7rem; color:var(--muted);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- Cart drawer ---------- */
+  .cart-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:900; opacity:0; pointer-events:none; transition:opacity .25s ease; }
+  .cart-overlay.open{ opacity:1; pointer-events:auto; }
+  .cart-drawer{
+    position:fixed; top:0; bottom:0; left:0; width:min(400px,92vw); background:var(--paper);
+    color:var(--ink); z-index:901; transform:translateX(-100%); transition:transform .3s cubic-bezier(.2,.8,.2,1);
+    display:flex; flex-direction:column;
+  }
+  .cart-drawer.open{ transform:translateX(0); }
+  .cart-head{ display:flex; justify-content:space-between; align-items:center; padding:22px 24px; border-bottom:1px solid var(--line-dark); }
+  .cart-head h3{ font-weight:800; font-size:1.15rem; }
+  .cart-close{ font-size:1.5rem; color:var(--muted); line-height:1; }
+  .cart-items{ flex:1; overflow-y:auto; padding:6px 24px; }
+  .cart-empty{ text-align:center; color:var(--muted); padding:60px 0; font-size:0.9rem; }
+  .cart-item{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:16px 0; border-bottom:1px solid var(--line-dark); }
+  .cart-item-name{ font-size:0.9rem; font-weight:600; }
+  .cart-item-price{ font-family:var(--ff-mono); font-size:0.78rem; color:var(--clay); margin-top:4px; }
+  .cart-qty{ display:flex; align-items:center; gap:8px; font-family:var(--ff-mono); }
+  .cart-qty button{ width:26px; height:26px; border-radius:50%; border:1px solid var(--line-dark); display:flex; align-items:center; justify-content:center; }
+  .cart-qty button:hover{ border-color:var(--clay); color:var(--clay); }
+  .cart-remove{ font-size:0.72rem; color:var(--clay); margin-inline-start:8px; }
+  .cart-foot{ padding:22px 24px 26px; border-top:1px solid var(--line-dark); }
+  .coupon-row{ display:flex; gap:8px; margin-bottom:14px; }
+  .coupon-row input{ flex:1; background:var(--paper-dim); border:1px solid var(--line-dark); border-radius:100px; padding:10px 16px; font-family:var(--ff-mono); font-size:0.82rem; color:var(--ink); text-transform:uppercase; }
+  .coupon-row input::placeholder{ text-transform:none; font-family:var(--ff-display); }
+  .coupon-row button{ background:var(--ink); color:var(--paper); font-size:0.78rem; font-weight:700; padding:0 16px; border-radius:100px; white-space:nowrap; }
+  .coupon-msg{ font-size:0.76rem; margin-bottom:12px; min-height:1.2em; }
+  .coupon-msg.ok{ color:var(--sage); }
+  .coupon-msg.err{ color:var(--ruby); }
+  .cart-subtotal-row{ display:flex; justify-content:space-between; font-size:0.82rem; color:var(--muted); margin-bottom:6px; }
+  .cart-discount-row{ display:flex; justify-content:space-between; font-size:0.82rem; color:var(--sage); font-weight:700; margin-bottom:6px; }
+  .cart-total-row{ display:flex; justify-content:space-between; font-weight:800; margin-bottom:16px; }
+  .cart-total-row .amount{ font-family:var(--ff-mono); color:var(--clay); }
+  .checkout-btn{
+    width:100%; background:var(--clay); color:var(--paper); font-weight:700; font-size:0.95rem;
+    padding:15px; border-radius:100px; display:flex; align-items:center; justify-content:center; gap:10px;
+  }
+  .checkout-btn:disabled{ opacity:0.4; cursor:not-allowed; }
+
+  /* ---------- Checkout payment modal ---------- */
+  .pay-overlay{ position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:950; display:none; align-items:center; justify-content:center; padding:20px; }
+  .pay-overlay.open{ display:flex; }
+  .pay-modal{ background:var(--paper); color:var(--ink); border-radius:24px; max-width:420px; width:100%; max-height:88vh; overflow-y:auto; padding:26px; }
+  .pay-modal h3{ font-weight:800; font-size:1.2rem; margin-bottom:6px; }
+  .pay-step-label{ font-family:var(--ff-mono); font-size:0.68rem; color:var(--muted); letter-spacing:.06em; margin-bottom:16px; }
+  .pay-field{ margin-bottom:14px; }
+  .pay-field label{ display:block; font-size:0.82rem; margin-bottom:6px; color:#5A6350; }
+  .pay-field input, .pay-field textarea{ width:100%; background:#EAE1C7; border:1px solid var(--line-dark); border-radius:12px; padding:12px 14px; color:var(--ink); font-size:0.9rem; font-family:inherit; }
+  .pay-field textarea{ resize:vertical; min-height:60px; }
+  .pay-next{ width:100%; background:var(--clay); color:var(--paper); font-weight:700; padding:14px; border-radius:100px; margin-top:4px; }
+  .pay-back{ font-size:0.8rem; color:var(--muted); text-decoration:underline; margin-top:10px; display:inline-block; }
+  .pay-card-box{ background:var(--ink); color:var(--paper); border-radius:18px; padding:20px; margin:12px 0 16px; }
+  .pay-card-box .pcb-label{ font-family:var(--ff-mono); font-size:0.68rem; opacity:0.6; letter-spacing:.06em; }
+  .pay-card-box .pcb-number{ font-family:var(--ff-mono); font-size:1.2rem; letter-spacing:.05em; margin:8px 0; direction:ltr; text-align:left; color:var(--gold); }
+  .pay-card-box .pcb-name{ font-size:0.9rem; font-weight:700; }
+  .pay-card-box .pcb-copy{ margin-top:12px; background:var(--gold); color:var(--ink); font-size:0.78rem; font-weight:700; padding:8px 16px; border-radius:100px; }
+  .pay-summary{ background:#EAE1C7; border-radius:14px; padding:14px 16px; margin-bottom:16px; font-size:0.85rem; }
+  .pay-summary .ps-row{ display:flex; justify-content:space-between; padding:4px 0; color:#5A6350; }
+  .pay-summary .ps-discount{ color:var(--sage); }
+  .pay-summary .ps-total{ display:flex; justify-content:space-between; margin-top:8px; padding-top:8px; border-top:1px solid var(--line-dark); font-weight:800; }
+  .pay-success{ text-align:center; padding:10px 0; }
+  .toast{
+    position:fixed; bottom:26px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--ink); color:var(--paper); font-weight:700; font-size:0.85rem;
+    padding:12px 22px; border-radius:100px; z-index:950; opacity:0; pointer-events:none;
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .toast.show{ opacity:1; transform:translateX(-50%) translateY(0); }
+  /* ---------- Cockatiel AI mascot chat ---------- */
+  .mascot-btn{
+    position:fixed; bottom:22px; left:22px; z-index:850; width:62px; height:62px; border-radius:50%;
+    background:linear-gradient(160deg,#F2E6C8,#D9C48A); border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center; box-shadow:0 10px 26px rgba(0,0,0,0.25);
+    cursor:pointer; animation:mascot-bob 2.4s ease-in-out infinite;
+  }
+  @keyframes mascot-bob{ 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-6px);} }
+  .mascot-btn svg{ width:38px; height:38px; }
+  .mascot-badge{
+    position:absolute; top:-4px; left:-4px; background:var(--clay); color:#fff; font-family:var(--ff-mono);
+    font-size:0.62rem; font-weight:700; width:18px; height:18px; border-radius:50%; display:flex;
+    align-items:center; justify-content:center;
+  }
+  .mascot-panel{
+    position:fixed; bottom:96px; left:22px; z-index:851; width:min(340px,88vw); max-height:70vh;
+    background:var(--paper); border-radius:20px; border:1px solid var(--line-dark); overflow:hidden;
+    display:flex; flex-direction:column; box-shadow:0 24px 60px rgba(0,0,0,0.28);
+    transform:translateY(16px) scale(0.96); opacity:0; pointer-events:none; transition:all .25s ease;
+  }
+  .mascot-panel.open{ transform:translateY(0) scale(1); opacity:1; pointer-events:auto; }
+  .mascot-head{
+    background:var(--ink); color:var(--paper); padding:16px 18px; display:flex; align-items:center; gap:10px;
+  }
+  .mascot-head svg{ width:30px; height:30px; flex-shrink:0; }
+  .mascot-head .h-info{ flex:1; }
+  .mascot-head .h-title{ font-weight:700; font-size:0.9rem; }
+  .mascot-head .h-sub{ font-size:0.7rem; color:var(--gold); font-family:var(--ff-mono); }
+  .mascot-close{ background:none; color:var(--paper-dim); font-size:1.1rem; padding:4px; }
+  .mascot-body{ flex:1; overflow-y:auto; padding:14px 16px; display:flex; flex-direction:column; gap:10px; background:var(--paper-dim); }
+  .m-msg{ max-width:85%; padding:10px 14px; border-radius:14px; font-size:0.84rem; line-height:1.6; }
+  .m-msg.bot{ background:#fff; border:1px solid var(--line-dark); align-self:flex-start; border-bottom-right-radius:4px; }
+  .m-msg.user{ background:var(--ink); color:var(--paper); align-self:flex-end; border-bottom-left-radius:4px; }
+  .m-suggest-card{
+    background:#fff; border:1px solid var(--line-dark); border-radius:12px; padding:10px 12px;
+    display:flex; justify-content:space-between; align-items:center; gap:8px; font-size:0.8rem;
+  }
+  .m-suggest-card b{ display:block; font-size:0.82rem; }
+  .m-suggest-card .m-price{ font-family:var(--ff-mono); color:var(--gold); font-weight:700; white-space:nowrap; }
+  .mascot-quick{ display:flex; gap:6px; flex-wrap:wrap; padding:0 16px 10px; background:var(--paper-dim); }
+  .mascot-quick button{
+    background:#fff; border:1px solid var(--line-dark); border-radius:100px; padding:6px 12px; font-size:0.72rem; color:var(--ink);
+  }
+  .mascot-quick button:hover{ border-color:var(--gold); color:var(--gold); }
+  .mascot-input-row{ display:flex; gap:8px; padding:12px 16px; background:#fff; border-top:1px solid var(--line-dark); }
+  .mascot-input-row input{
+    flex:1; border:1px solid var(--line-dark); border-radius:100px; padding:10px 16px; font-family:inherit; font-size:0.84rem;
+  }
+  .mascot-send{ background:var(--gold); color:var(--ink); border-radius:50%; width:38px; height:38px; font-size:1rem; flex-shrink:0; }
+  .m-typing{ display:flex; gap:4px; align-items:center; padding:12px 16px !important; }
+  .m-typing span{ width:6px; height:6px; border-radius:50%; background:#999; animation:m-typing-bounce 1.2s infinite ease-in-out; }
+  .m-typing span:nth-child(2){ animation-delay:0.15s; }
+  .m-typing span:nth-child(3){ animation-delay:0.3s; }
+  @keyframes m-typing-bounce{ 0%,60%,100%{ transform:translateY(0); opacity:0.5;} 30%{ transform:translateY(-4px); opacity:1;} }
+  .mascot-add-btn{
+    background:var(--ink); color:var(--paper); font-size:0.68rem; font-weight:700; padding:6px 10px;
+    border-radius:100px; flex-shrink:0; transition:background .2s ease;
+  }
+  .mascot-add-btn:hover{ background:var(--gold); color:var(--ink); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-row">
+    <a href="#hero" class="logo">
+      <svg class="logo-seal" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#C79A3E" stroke-width="1.5"/>
+        <path d="M20 10c-5 4-8 8-8 13a8 8 0 0 0 16 0c0-5-3-9-8-13Z" stroke="#F3ECD9" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M20 15v14" stroke="#C79A3E" stroke-width="1.3"/>
+      </svg>
+      <span class="logo-text">گودرزی<span class="en">GOODARZI HERBAL</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#products">محصولات</a>
+      <a href="#game">نبرد با هیولا</a>
+      <a href="#why">چرا ما</a>
+      <a href="#contact">تماس</a>
+    </div>
+    <div class="nav-right">
+      <a href="#" id="registerOpenLink" style="font-size:0.82rem; color:var(--gold); font-weight:700;">ثبت‌نام</a>
+      <button class="cart-btn" id="cartBtn" aria-label="سبد خرید">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h15l-1.5 9.5a2 2 0 0 1-2 1.7H8.7a2 2 0 0 1-2-1.7L5 4H2"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>
+        <span class="cart-count" id="cartCount" style="display:none;">0</span>
+      </button>
+      <a href="#contact" class="nav-cta">سفارش بده</a>
+    </div>
+  </div>
+</nav>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h3>سبد خرید</h3>
+    <button class="cart-close" id="cartClose" aria-label="بستن">×</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">سبد خریدت فعلاً خالیه</div>
+  </div>
+  <div class="cart-foot">
+    <div class="coupon-row">
+      <input type="text" id="couponInput" placeholder="کد تخفیف بازی رو اینجا بزن">
+      <button id="couponApplyBtn">اعمال کد</button>
+    </div>
+    <div class="coupon-msg" id="couponMsg"></div>
+    <div class="cart-subtotal-row" id="subtotalRow" style="display:none;"><span>جمع جزء</span><span id="cartSubtotal"></span></div>
+    <div class="cart-discount-row" id="discountRow" style="display:none;"><span>تخفیف</span><span id="cartDiscountAmt"></span></div>
+    <div class="cart-total-row"><span>جمع کل</span><span class="amount" id="cartTotal">۰ تومان</span></div>
+    <button class="checkout-btn" id="checkoutBtn" disabled>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.36 5.07L2 22l5.06-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.2 14.16c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.02.07-1.65-.1-.38-.11-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.43-1.08-2.73 0-1.3.68-1.93.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.14.16-.29.35-.41.47-.14.13-.28.28-.12.55.16.27.72 1.19 1.55 1.93 1.07.95 1.97 1.25 2.24 1.39.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.25.09 1.56.74 1.83.87.27.13.45.2.51.31.07.11.07.62-.15 1.24Z"/></svg>
+      تسویه‌حساب
+    </button>
+  </div>
+</aside>
+<div class="toast" id="toast">به سبد اضافه شد</div>
+
+<div class="pay-overlay" id="payOverlay">
+  <div class="pay-modal" id="payModal"></div>
+</div>
+
+<section class="hero" id="hero">
+  <div class="container hero-grid">
+    <div class="reveal in">
+      <div class="eyebrow">عطاری سنتی و ارگانیک</div>
+      <h1>گیاهانی که <em>نسل به نسل</em> اعتماد ساختن</h1>
+      <p>از زعفران سرگل تا روغن‌های طبیعی؛ گودرزی محصولاتش رو مستقیم از منابع معتبر ایرانی تهیه می‌کنه، بدون واسطه و بدون افزودنی.</p>
+      <div class="btn-row">
+        <a href="#products" class="btn btn-primary">مشاهده محصولات</a>
+        <a href="#game" class="btn btn-ghost">نبرد با هیولا</a>
+      </div>
+    </div>
+    <div class="hero-seal reveal in">
+      <svg viewBox="0 0 100 100" fill="none">
+        <path d="M50 18c-14 10-22 22-22 36a22 22 0 0 0 44 0c0-14-8-26-22-36Z" stroke="#F3ECD9" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M50 30v42M40 42c4 3 6 6 6 10M60 42c-4 3-6 6-6 10" stroke="#C79A3E" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="chico-pick" style="background:var(--paper); padding:50px 0;">
+  <div class="container">
+    <div id="chicoPickCard" style="
+      background:var(--ink); border:1.5px solid var(--gold); border-radius:20px; padding:26px 28px;
+      display:flex; align-items:center; gap:18px; flex-wrap:wrap; box-shadow:0 20px 46px rgba(0,0,0,0.22);
+    ">
+      <div style="font-size:2.2rem; flex-shrink:0;">🦜</div>
+      <div style="flex:1; min-width:200px;">
+        <div style="font-family:var(--ff-mono); color:var(--gold); font-size:0.72rem; letter-spacing:.08em; margin-bottom:6px;">پیشنهاد امروز چیکو</div>
+        <div id="chicoPickText" style="color:var(--paper); font-size:0.95rem; font-weight:600;">در حال انتخاب...</div>
+      </div>
+      <button id="chicoPickBtn" style="background:var(--gold); color:var(--ink); font-weight:800; font-size:0.82rem; padding:11px 20px; border-radius:100px; flex-shrink:0;">افزودن به سبد</button>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">پرفروش‌ترین‌ها</div>
+      <h2>محصولات منتخب عطاری</h2>
+      <p>گلچینی از گیاهان دارویی، ادویه‌جات و روغن‌های طبیعی؛ تازه و بسته‌بندی‌شده.</p>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
+
+<section id="game">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">یه استراحت کوتاه</div>
+      <h2>نبرد با هیولای علف‌های هرز</h2>
+      <p>روی هیولا ضربه بزن و شکستش بده. یه ضربه‌ی هدف‌گیری‌شده گاهی کریتیکاله. به لول ۵ که برسی یه کد تخفیف ۱۰٪ می‌گیری، و اگه تا لول ۱۵ ادامه بدی، کد تخفیف ۲۵٪ منتظرته. اگه ببازی، فقط همون مبارزه از اول شروع می‌شه، نه از لول ۱.</p>
+    </div>
+    <div class="game-wrap reveal">
+      <div class="game-card">
+        <div class="game-stats">
+          <div class="game-level">لول <b id="gameLevel">1</b></div>
+          <div class="game-lives" id="gameLives">
+            <span class="life-dot"></span><span class="life-dot"></span><span class="life-dot"></span>
+          </div>
+          <button id="gameSoundToggle" aria-label="صدا" style="width:30px; height:30px; border-radius:50%; background:var(--ink-3); display:flex; align-items:center; justify-content:center;">
+            <svg id="gameSoundIcon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" style="color:var(--gold);"><path d="M4 9v6h4l5 5V4L8 9H4zm11.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg>
+          </button>
+        </div>
+        <div class="game-combo" id="gameCombo"></div>
+        <div class="monster-stage" id="monsterStage">
+          <svg class="monster" id="monsterSvg" viewBox="0 0 150 150" fill="none">
+            <ellipse cx="75" cy="85" rx="52" ry="46" fill="#8CA07C"/>
+            <path d="M40 55c-4-10-2-20 6-22 4 8 2 16-2 22M110 55c4-10 2-20-6-22-4 8-2 16 2 22" fill="#8CA07C"/>
+            <circle cx="58" cy="80" r="9" fill="#1F2A1D"/>
+            <circle cx="92" cy="80" r="9" fill="#1F2A1D"/>
+            <circle cx="61" cy="77" r="3" fill="#F3ECD9"/>
+            <circle cx="95" cy="77" r="3" fill="#F3ECD9"/>
+            <path d="M58 108c6 6 28 6 34 0" stroke="#1F2A1D" stroke-width="3" stroke-linecap="round"/>
+            <path d="M50 108l4 6M100 108l-4 6M62 112l2 6M88 112l-2 6" stroke="#1F2A1D" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="hp-bar"><div class="hp-fill" id="hpFill" style="width:100%"></div></div>
+        <div class="hp-label" id="hpLabel">۲۴ / ۲۴</div>
+        <div class="game-msg" id="gameMsg">روی هیولا بزن!</div>
+
+        <div class="reward-panel">
+          <div class="reward-card" id="reward10">
+            <div class="rt">لول ۵<b>۱۰٪ تخفیف</b></div>
+            <div class="reward-code-wrap">
+              <div class="reward-code locked" id="code10">قفل</div>
+              <button class="reward-copy" id="copy10" style="display:none;" aria-label="کپی کد">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="reward-card" id="reward100">
+            <div class="rt">لول ۱۵<b>۲۵٪ تخفیف</b></div>
+            <div class="reward-code-wrap">
+              <div class="reward-code locked tier2" id="code100">قفل</div>
+              <button class="reward-copy" id="copy100" style="display:none;" aria-label="کپی کد">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4a2 2 0 0 0-2 2v14h2V3h12V1Zm3 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h11a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2Zm0 16H8V7h11v14Z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" style="background:#EAE1C7;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="justify-content:center;">تعهد ما</div>
+      <h2>چرا گودرزی رو انتخاب کنی</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div>
+        <h3>اصالت تضمینی</h3>
+        <p>همه محصولات مستقیم از منابع معتبر و بدون واسطه تهیه می‌شن.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h3>ارسال سریع</h3>
+        <p>ارسال به سراسر کشور با بسته‌بندی مطمئن و بهداشتی.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 7v6c0 5 4 8 9 9 5-1 9-4 9-9V7Z"/></svg></div>
+        <h3>ضمانت کیفیت</h3>
+        <p>در صورت نارضایتی، هفت روز مهلت بازگشت کالا داری.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial">
+  <div class="container">
+    <blockquote class="reveal">«زعفرانی که از گودرزی گرفتم، رنگ و عطرش قابل مقایسه با هیچ‌جای دیگه نبود. کاملاً محسوسه که تازه و اصله.»</blockquote>
+    <div class="who reveal">— مشتری همیشگی عطاری گودرزی</div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <div class="cta-box reveal">
+      <h2>سفارشت رو ثبت کن</h2>
+      <p>همین حالا با ما در تماس باش تا بهترین محصولات گیاهی رو برات آماده کنیم.</p>
+      <a href="https://wa.me/989388495031" class="btn btn-primary" target="_blank" rel="noopener">تماس با فروشگاه</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a href="#hero" class="logo" style="color:var(--paper)">
+        <svg class="logo-seal" viewBox="0 0 40 40" fill="none">
+          <circle cx="20" cy="20" r="18" stroke="#C79A3E" stroke-width="1.5"/>
+          <path d="M20 10c-5 4-8 8-8 13a8 8 0 0 0 16 0c0-5-3-9-8-13Z" stroke="#F3ECD9" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M20 15v14" stroke="#C79A3E" stroke-width="1.3"/>
+        </svg>
+        <span class="logo-text">گودرزی<span class="en">GOODARZI HERBAL</span></span>
+      </a>
+      <div class="footer-links">
+        <a href="#products">محصولات</a>
+        <a href="#game">نبرد با هیولا</a>
+        <a href="#why">چرا ما</a>
+        <a href="tel:+989388495031" dir="ltr">۰۹۳۸۸۴۹۵۰۳۱</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© ۱۴۰۴ عطاری گودرزی. همه‌ی حقوق محفوظه.</span>
+      <span>ایران · <a href="#" id="adminOpenLink" style="text-decoration:underline;">پنل مدیریت</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="pay-overlay" id="adminOverlay">
+  <div class="pay-modal" id="adminModal" style="max-width:480px;"></div>
+</div>
+
+<div class="pay-overlay" id="registerOverlay">
+  <div class="pay-modal" id="registerModal"></div>
+</div>
+
+<script>
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold:0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // ============================================================
+  // 🌿 آیکون‌های خطی محصولات (طراحی اصلی، بدون کپی‌رایت)
+  // ============================================================
+  const ICN = {
+    flower: `<svg viewBox="0 0 48 48" fill="none"><path d="M24 10c-8 6-12 12-12 18a12 12 0 0 0 24 0c0-6-4-12-12-18Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M24 18v20M17 26c3 2 4 4 4 6M31 26c-3 2-4 4-4 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+    root:  `<svg viewBox="0 0 48 48" fill="none"><path d="M24 8c6 4 8 9 8 14 0 8-4 10-4 16M24 8c-6 4-8 9-8 14 0 8 4 10 4 16" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><path d="M20 22c-3 1-5 3-6 6M28 22c3 1 5 3 6 6M22 32c-2 2-3 4-3 6M26 32c2 2 3 4 3 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`,
+    jar:   `<svg viewBox="0 0 48 48" fill="none"><path d="M15 18h18v20a3 3 0 0 1-3 3H18a3 3 0 0 1-3-3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 8h14v10H17Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M15 26h18" stroke="currentColor" stroke-width="1.4" opacity="0.6"/></svg>`,
+    bottle:`<svg viewBox="0 0 48 48" fill="none"><path d="M20 6h8v8l4 5v21a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3V19l4-5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 26h12" stroke="currentColor" stroke-width="1.4" opacity="0.6"/></svg>`,
+    bowl:  `<svg viewBox="0 0 48 48" fill="none"><path d="M8 22h32a16 15 0 0 1-32 0Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><ellipse cx="24" cy="22" rx="16" ry="4" stroke="currentColor" stroke-width="1.6"/><path d="M17 22c1-6 3-10 7-13M31 22c-1-6-3-10-7-13" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity="0.7"/></svg>`,
+    sprig: `<svg viewBox="0 0 48 48" fill="none"><path d="M24 40V10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M24 14c-6-2-9-1-12 2 4 2 8 2 12 0M24 22c-6-2-9-1-12 2 4 2 8 2 12 0M24 30c6-2 9-1 12 2-4 2-8 2-12 0M24 20c6-2 9-1 12 2-4 2-8 2-12 0" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>`,
+    seeds: `<svg viewBox="0 0 48 48" fill="none"><ellipse cx="16" cy="18" rx="4" ry="6" transform="rotate(-20 16 18)" stroke="currentColor" stroke-width="1.8"/><ellipse cx="28" cy="14" rx="4" ry="6" transform="rotate(10 28 14)" stroke="currentColor" stroke-width="1.8"/><ellipse cx="34" cy="26" rx="4" ry="6" transform="rotate(50 34 26)" stroke="currentColor" stroke-width="1.8"/><ellipse cx="20" cy="30" rx="4" ry="6" transform="rotate(-40 20 30)" stroke="currentColor" stroke-width="1.8"/><ellipse cx="14" cy="34" rx="4" ry="6" transform="rotate(80 14 34)" stroke="currentColor" stroke-width="1.8"/></svg>`,
+    cup:   `<svg viewBox="0 0 48 48" fill="none"><path d="M10 16h22v14a9 9 0 0 1-9 9h-4a9 9 0 0 1-9-9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M32 19h3a5 5 0 0 1 0 10h-3" stroke="currentColor" stroke-width="2"/><path d="M16 8c1 2-1 3 0 5M22 8c1 2-1 3 0 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`,
+  };
+
+  // ============================================================
+  // 🛍️ محصولات — قیمت به تومان
+  // ============================================================
+  const products = [
+    { id:'p1', name:'زعفران سرگل ممتاز (۱ مثقال)', cat:'ادویه', price:850000, icon:ICN.flower, tag:'پرفروش', img:null, uses:['استرس','آرامش','خلق و خو'] },
+    { id:'p2', name:'دارچین چوبی سیلان', cat:'ادویه', price:180000, icon:ICN.root, tag:'', img:null, uses:['سرماخوردگی','سرفه'] },
+    { id:'p3', name:'زنجبیل خشک خردشده', cat:'ریشه گیاهی', price:120000, icon:ICN.root, tag:'', img:null, uses:['سرماخوردگی','سرفه','گلودرد','تهوع'] },
+    { id:'p4', name:'گل بابونه خشک', cat:'دمنوش', price:95000, icon:ICN.flower, tag:'', img:null, uses:['استرس','بی‌خوابی','نفخ'] },
+    { id:'p5', name:'عسل طبیعی کوهستان', cat:'عسل', price:450000, icon:ICN.jar, tag:'جدید', img:null, uses:['سرماخوردگی','سرفه','گلودرد'] },
+    { id:'p6', name:'روغن کنجد خالص', cat:'روغن طبیعی', price:280000, icon:ICN.bottle, tag:'', img:null, uses:['پوست','مو'] },
+    { id:'p7', name:'زردچوبه ارگانیک', cat:'ادویه', price:90000, icon:ICN.bowl, tag:'', img:null, uses:['التهاب','ایمنی بدن'] },
+    { id:'p8', name:'آویشن شیرازی خشک', cat:'گیاه دارویی', price:85000, icon:ICN.sprig, tag:'', img:null, uses:['سرماخوردگی','سرفه','گلودرد'] },
+    { id:'p9', name:'گلاب طبیعی دوآتشه', cat:'عرقیجات', price:150000, icon:ICN.bottle, tag:'ویژه', tagClass:'special', img:null, uses:['آرامش','پوست'] },
+    { id:'p10', name:'دانه سیاه‌دانه', cat:'دانه دارویی', price:130000, icon:ICN.seeds, tag:'', img:null, uses:['ایمنی بدن','آلرژی'] },
+    { id:'p11', name:'چای ترش (چای قرمز)', cat:'دمنوش', price:110000, icon:ICN.cup, tag:'', img:null, uses:['فشار خون'] },
+    { id:'p12', name:'شنبلیله خشک', cat:'دانه دارویی', price:75000, icon:ICN.seeds, tag:'', img:null, uses:['قند خون'] },
+    { id:'p13', name:'روغن بادام شیرین', cat:'روغن طبیعی', price:320000, icon:ICN.bottle, tag:'', img:null, uses:['پوست','مو'] },
+    { id:'p14', name:'عرق نعنا خالص', cat:'عرقیجات', price:95000, icon:ICN.bottle, tag:'', img:null, uses:['نفخ','گوارش'] },
+  ];
+
+  function formatToman(n){ return n.toLocaleString('fa-IR') + ' تومان'; }
+
+  // load any admin edits (name/price/image) saved from a previous visit on this device
+  function loadProductOverrides(){
+    try{
+      const saved = JSON.parse(localStorage.getItem('goodarzi_product_overrides') || '{}');
+      products.forEach(p => {
+        if(saved[p.id]){
+          if(saved[p.id].name) p.name = saved[p.id].name;
+          if(saved[p.id].price) p.price = saved[p.id].price;
+          if(saved[p.id].img) p.img = saved[p.id].img;
+        }
+      });
+    }catch(e){}
+  }
+  function saveProductOverride(id, data){
+    try{
+      const saved = JSON.parse(localStorage.getItem('goodarzi_product_overrides') || '{}');
+      saved[id] = Object.assign(saved[id] || {}, data);
+      localStorage.setItem('goodarzi_product_overrides', JSON.stringify(saved));
+    }catch(e){}
+  }
+  loadProductOverrides();
+
+  const grid = document.getElementById('productsGrid');
+  function renderProducts(){
+    grid.innerHTML = products.map(p => `
+      <div class="p-card">
+        <div class="p-media">
+          ${p.tag ? `<div class="p-tag${p.tagClass ? ' '+p.tagClass : ''}">${p.tag}</div>` : ''}
+          ${p.img ? `<img src="${p.img}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">` : `<div class="icon">${p.icon}</div>`}
+        </div>
+        <div class="p-body">
+          <div class="p-cat">${p.cat}</div>
+          <div class="p-name">${p.name}</div>
+          <div class="p-price">${formatToman(p.price)}</div>
+          <button class="p-add" onclick="addToCart('${p.id}','${p.name.replace(/'/g,"\\'")}',${p.price},this)">افزودن به سبد</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  renderProducts();
+
+  // ---------- Chico's daily pick (deterministic per-day "AI" recommendation) ----------
+  function setupChicoPick(){
+    const card = document.getElementById('chicoPickText');
+    const btn = document.getElementById('chicoPickBtn');
+    if(!card || !products.length) return;
+    const dayStr = new Date().toISOString().slice(0,10);
+    let seed = 0;
+    for(let i=0;i<dayStr.length;i++) seed += dayStr.charCodeAt(i);
+    const pick = products[seed % products.length];
+    const reasons = [
+      `بیشترین تقاضا رو توی دسته «${pick.cat}» داره`,
+      `بر اساس کاربردهای سنتی، یکی از پرکاربردترین گزینه‌هاست`,
+      `کیفیت و قیمتش بهترین ترکیب امروزه`
+    ];
+    const reason = reasons[seed % reasons.length];
+    card.textContent = `${pick.name} — ${reason}. قیمت: ${formatToman(pick.price)}`;
+    btn.addEventListener('click', ()=> addToCart(pick.id, pick.name, pick.price, btn));
+  }
+  setupChicoPick();
+
+  // ---------- Cart + checkout ----------
+  const WHATSAPP_NUMBER = '989388495031';
+  const SECOND_PHONE = '989169653007'; // شماره تماس دوم برای هماهنگی تحویل
+  // TODO: وقتی درگاه پرداخت (مثلاً زرین‌پال) رو راه انداختی، Merchant ID رو اینجا بذار
+  // و بخش پرداخت رو به‌جای کارت‌به‌کارت، به درگاه واقعی وصل کن:
+  const ZARINPAL_MERCHANT_ID = ''; // مثال: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+  const VALID_COUPONS = { 'GOODARZI10': 0.10, 'GOODARZI25': 0.25 };
+
+  function genReceiptCode(){
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = 'GHS-';
+    for(let i=0;i<6;i++) code += chars[Math.floor(Math.random()*chars.length)];
+    return code;
+  }
+
+  function loadUsedCoupons(){
+    try{ return JSON.parse(localStorage.getItem('goodarzi_used_coupons') || '[]'); }
+    catch(e){ return []; }
+  }
+  function saveUsedCoupons(list){
+    try{ localStorage.setItem('goodarzi_used_coupons', JSON.stringify(list)); }catch(e){}
+  }
+  let usedCoupons = loadUsedCoupons();
+
+  let cart = [];
+  let coupon = null; // { code, percent }
+  let buyer = { name:'', phone:'', address:'' };
+
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartTotalEl = document.getElementById('cartTotal');
+  const cartCountEl = document.getElementById('cartCount');
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  const toast = document.getElementById('toast');
+  const couponInput = document.getElementById('couponInput');
+  const couponMsg = document.getElementById('couponMsg');
+  const subtotalRow = document.getElementById('subtotalRow');
+  const discountRow = document.getElementById('discountRow');
+  const cartSubtotalEl = document.getElementById('cartSubtotal');
+  const cartDiscountAmtEl = document.getElementById('cartDiscountAmt');
+  const payOverlay = document.getElementById('payOverlay');
+  const payModal = document.getElementById('payModal');
+
+  function openCart(){ cartDrawer.classList.add('open'); cartOverlay.classList.add('open'); }
+  function closeCart(){ cartDrawer.classList.remove('open'); cartOverlay.classList.remove('open'); }
+  document.getElementById('cartBtn').addEventListener('click', openCart);
+  document.getElementById('cartClose').addEventListener('click', closeCart);
+  cartOverlay.addEventListener('click', closeCart);
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(window._toastTimer);
+    window._toastTimer = setTimeout(() => toast.classList.remove('show'), 1600);
+  }
+
+  function addToCart(id, name, price, btnEl){
+    const existing = cart.find(i => i.id === id);
+    if(existing){ existing.qty += 1; } else{ cart.push({ id, name, price, qty:1 }); }
+    renderCart();
+    showToast('به سبد اضافه شد');
+    if(btnEl){
+      const original = btnEl.textContent;
+      btnEl.textContent = 'اضافه شد';
+      btnEl.classList.add('added');
+      setTimeout(() => { btnEl.textContent = original; btnEl.classList.remove('added'); }, 1000);
+    }
+  }
+  function changeQty(id, delta){
+    const item = cart.find(i => i.id === id);
+    if(!item) return;
+    item.qty += delta;
+    if(item.qty <= 0){ cart = cart.filter(i => i.id !== id); }
+    renderCart();
+  }
+  function removeFromCart(id){ cart = cart.filter(i => i.id !== id); renderCart(); }
+
+  function subtotal(){ return cart.reduce((s,i) => s + i.price*i.qty, 0); }
+  function discountAmount(){ return coupon ? Math.round(subtotal() * coupon.percent) : 0; }
+  function cartFinalTotal(){ return subtotal() - discountAmount(); }
+
+  // sales are logged when the buyer confirms they've paid (card-to-card, self-reported —
+  // same as the WhatsApp receipt flow). the owner still verifies the deposit before shipping.
+  function logSale(total, couponCode, receiptCode){
+    try{
+      const log = JSON.parse(localStorage.getItem('goodarzi_sales_log') || '[]');
+      log.push({
+        ts: Date.now(), total, coupon: couponCode || null, code: receiptCode,
+        buyer: { name: buyer.name, phone: buyer.phone, address: buyer.address },
+        items: cart.map(i => ({ name:i.name, qty:i.qty, price:i.price }))
+      });
+      localStorage.setItem('goodarzi_sales_log', JSON.stringify(log));
+    }catch(e){}
+  }
+
+  couponInput.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); applyCoupon(); } });
+  document.getElementById('couponApplyBtn').addEventListener('click', applyCoupon);
+  function applyCoupon(){
+    const code = couponInput.value.trim().toUpperCase();
+    if(!code){ return; }
+    if(usedCoupons.includes(code)){
+      coupon = null;
+      couponMsg.textContent = 'این کد قبلاً استفاده شده. هر کد فقط یه بار قابل استفاده‌ست.';
+      couponMsg.className = 'coupon-msg err';
+    } else if(VALID_COUPONS[code]){
+      coupon = { code, percent: VALID_COUPONS[code] };
+      couponMsg.textContent = `کد «${code}» اعمال شد — ${Math.round(coupon.percent*100)}٪ تخفیف`;
+      couponMsg.className = 'coupon-msg ok';
+    } else {
+      coupon = null;
+      couponMsg.textContent = 'این کد معتبر نیست. کدت رو از بازی «نبرد با هیولا» بگیر.';
+      couponMsg.className = 'coupon-msg err';
+    }
+    renderCart();
+  }
+
+  function renderCart(){
+    const totalCount = cart.reduce((s,i) => s + i.qty, 0);
+    cartCountEl.textContent = totalCount;
+    cartCountEl.style.display = totalCount > 0 ? 'flex' : 'none';
+    if(cart.length === 0){
+      cartItemsEl.innerHTML = '<div class="cart-empty">سبد خریدت فعلاً خالیه</div>';
+      cartTotalEl.textContent = '۰ تومان';
+      subtotalRow.style.display = 'none';
+      discountRow.style.display = 'none';
+      checkoutBtn.disabled = true;
+      return;
+    }
+    cartItemsEl.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <div>
+          <div class="cart-item-name">${item.name}</div>
+          <div class="cart-item-price">${formatToman(item.price)}</div>
+          <button class="cart-remove" onclick="removeFromCart('${item.id}')">حذف</button>
+        </div>
+        <div class="cart-qty">
+          <button onclick="changeQty('${item.id}', -1)">−</button>
+          <span>${item.qty}</span>
+          <button onclick="changeQty('${item.id}', 1)">+</button>
+        </div>
+      </div>`).join('');
+
+    const sub = subtotal();
+    const disc = discountAmount();
+    if(coupon && disc > 0){
+      subtotalRow.style.display = 'flex';
+      discountRow.style.display = 'flex';
+      cartSubtotalEl.textContent = formatToman(sub);
+      cartDiscountAmtEl.textContent = '− ' + formatToman(disc);
+    } else {
+      subtotalRow.style.display = 'none';
+      discountRow.style.display = 'none';
+    }
+    cartTotalEl.textContent = formatToman(cartFinalTotal());
+    checkoutBtn.disabled = false;
+  }
+
+  // ---------- Checkout: buyer info -> card payment -> WhatsApp receipt ----------
+  checkoutBtn.addEventListener('click', () => {
+    if(cart.length === 0) return;
+    closeCart();
+    payOverlay.classList.add('open');
+    renderPayStepInfo();
+  });
+  payOverlay.addEventListener('click', (e) => { if(e.target === payOverlay) payOverlay.classList.remove('open'); });
+
+  function renderPayStepInfo(){
+    payModal.innerHTML = `
+      <div class="pay-step-label">مرحله ۱ از ۲ · اطلاعات گیرنده</div>
+      <h3>اطلاعاتت رو وارد کن</h3>
+      <div class="pay-field"><label>اسم و فامیل</label><input type="text" id="pInfoName" value="${buyer.name}" placeholder="مثلاً سارا محمدی"></div>
+      <div class="pay-field"><label>شماره تماس</label><input type="tel" id="pInfoPhone" value="${buyer.phone}" placeholder="09xxxxxxxxx"></div>
+      <div class="pay-field"><label>آدرس</label><textarea id="pInfoAddress" placeholder="آدرس کامل برای ارسال">${buyer.address}</textarea></div>
+      <button class="pay-next" id="pToPayment">ادامه به پرداخت</button>
+    `;
+    document.getElementById('pToPayment').addEventListener('click', () => {
+      buyer.name = document.getElementById('pInfoName').value.trim();
+      buyer.phone = document.getElementById('pInfoPhone').value.trim();
+      buyer.address = document.getElementById('pInfoAddress').value.trim();
+      if(!buyer.name || !buyer.phone){ alert('لطفاً اسم و شماره تماس رو وارد کن'); return; }
+      renderPayStepPayment();
+    });
+  }
+
+  function orderSummaryHTML(){
+    const sub = subtotal();
+    const disc = discountAmount();
+    const rows = cart.map(it => `<div class="ps-row"><span>${it.name} × ${it.qty}</span><span>${formatToman(it.price*it.qty)}</span></div>`).join('');
+    const discRow = (coupon && disc > 0) ? `<div class="ps-row ps-discount"><span>تخفیف (${coupon.code})</span><span>− ${formatToman(disc)}</span></div>` : '';
+    return `<div class="pay-summary">${rows}${discRow}<div class="ps-total"><span>جمع کل</span><span>${formatToman(sub - disc)}</span></div></div>`;
+  }
+
+  function renderPayStepPayment(){
+    const gatewayReady = !!ZARINPAL_MERCHANT_ID;
+    payModal.innerHTML = `
+      <div class="pay-step-label">مرحله ۲ از ۲ · پرداخت</div>
+      <h3>پرداخت</h3>
+      ${orderSummaryHTML()}
+      <div class="pay-card-box" style="text-align:center;">
+        ${gatewayReady ? `
+          <div class="pcb-label">اتصال به درگاه پرداخت...</div>
+          <p style="font-size:0.82rem; color:#5A6350; margin-top:8px;">الان به صفحه‌ی امن بانک منتقل می‌شی.</p>
+        ` : `
+          <div class="pcb-label">درگاه پرداخت آنلاین</div>
+          <p style="font-size:0.82rem; color:#5A6350; margin-top:8px; line-height:1.8;">درگاه پرداخت آنلاین این فروشگاه هنوز راه‌اندازی نشده. سفارشت رو ثبت کن، برای هماهنگی پرداخت و ارسال باهات تماس می‌گیریم.</p>
+        `}
+      </div>
+      <p style="font-size:0.85rem; color:#5A6350; margin-bottom:14px;">مبلغ سفارش: <b>${formatToman(cartFinalTotal())}</b></p>
+      <button class="pay-next" id="pConfirmPay">${gatewayReady ? 'پرداخت آنلاین' : 'ثبت سفارش'}</button>
+      <a href="#" class="pay-back" id="pBackToInfo">بازگشت</a>
+    `;
+    document.getElementById('pBackToInfo').addEventListener('click', (e) => { e.preventDefault(); renderPayStepInfo(); });
+    document.getElementById('pConfirmPay').addEventListener('click', () => {
+      const sub = subtotal();
+      const disc = discountAmount();
+      const usedCode = coupon ? coupon.code : null;
+      const receiptCode = genReceiptCode();
+      const lines = cart.map(item => `- ${item.name} × ${item.qty} — ${formatToman(item.price * item.qty)}`);
+      let message = 'سلام، می‌خوام این سفارش رو از عطاری گودرزی ثبت کنم:\n\n';
+      message += `کد رسید: ${receiptCode}\n`;
+      message += `خریدار: ${buyer.name}\nشماره تماس: ${buyer.phone}\nآدرس: ${buyer.address}\n\n`;
+      message += lines.join('\n');
+      if(coupon && disc > 0) message += `\n\nکد تخفیف: ${coupon.code} (${Math.round(coupon.percent*100)}٪)\nتخفیف: − ${formatToman(disc)}`;
+      message += `\n\nجمع کل: ${formatToman(sub - disc)}\n\nرسید واریز رو همینجا می‌فرستم.`;
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, '_blank');
+      logSale(sub - disc, usedCode, receiptCode);
+      if(usedCode && !usedCoupons.includes(usedCode)){
+        usedCoupons.push(usedCode);
+        saveUsedCoupons(usedCoupons);
+        markCouponUsedInGame(usedCode);
+      }
+      renderPaySuccess(receiptCode, cart.slice(), sub - disc, buyer.name);
+      cart = []; coupon = null;
+      renderCart();
+    });
+  }
+
+  function renderPaySuccess(receiptCode, items, total, buyerName){
+    const dateStr = new Date().toLocaleDateString('fa-IR');
+    const itemsHtml = (items || []).map(i => `
+      <div style="display:flex; justify-content:space-between; font-size:0.8rem; padding:6px 0; border-bottom:1px dashed rgba(31,42,29,0.15);">
+        <span>${i.name} <span style="color:#8C8368;">× ${i.qty}</span></span>
+        <span style="font-family:var(--ff-mono);">${formatToman(i.price * i.qty)}</span>
+      </div>`).join('');
+    payModal.innerHTML = `
+      <div class="pay-success">
+        <div style="width:56px; height:56px; border-radius:50%; background:var(--sage); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin:0 auto 12px;">✓</div>
+        <h3 style="text-align:center;">سفارشت ثبت شد</h3>
+        <div style="background:#fff; border:1px solid var(--line-dark); border-radius:14px; padding:18px; margin:16px 0; box-shadow:0 8px 22px rgba(31,42,29,0.08);">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+            <span style="font-size:0.72rem; color:#8C8368;">عطاری گودرزی</span>
+            <span style="font-family:var(--ff-mono); font-size:0.72rem; color:#8C8368;">${dateStr}</span>
+          </div>
+          ${buyerName ? `<div style="font-size:0.8rem; margin-bottom:8px;">خریدار: <b>${buyerName}</b></div>` : ''}
+          <div style="margin:10px 0;">${itemsHtml}</div>
+          <div style="display:flex; justify-content:space-between; font-weight:800; font-size:0.92rem; padding-top:10px; border-top:1.5px solid var(--ink);">
+            <span>جمع کل</span><span style="font-family:var(--ff-mono);">${formatToman(total || 0)}</span>
+          </div>
+        </div>
+        <div style="background:var(--ink); color:var(--gold); border:1.5px dashed var(--gold); border-radius:14px; padding:16px; margin:16px 0; text-align:center;">
+          <div style="font-size:0.72rem; color:var(--paper-dim); font-family:var(--ff-mono); letter-spacing:.06em;">کد رسید تو</div>
+          <div style="font-family:var(--ff-mono); font-size:1.4rem; font-weight:700; margin-top:6px; letter-spacing:.05em;">${receiptCode}</div>
+        </div>
+        <p style="font-size:0.85rem; color:#5A6350; margin-top:8px; line-height:1.8;">رسید واریز رو توی واتساپی که باز شد بفرست تا سفارشت تأیید بشه. برای هماهنگی تحویل هم می‌تونی با شماره‌های زیر تماس بگیری:</p>
+        <p style="font-family:var(--ff-mono); font-size:0.9rem; margin-top:8px; direction:ltr; text-align:center;">${WHATSAPP_NUMBER.replace('98','0')} · ${SECOND_PHONE.replace('98','0')}</p>
+        <button class="pay-next" id="pDone" style="margin-top:18px;">باشه</button>
+      </div>
+    `;
+    document.getElementById('pDone').addEventListener('click', () => payOverlay.classList.remove('open'));
+  }
+
+  // ============================================================
+  // بازی نبرد با هیولا
+  // ============================================================
+  const LEVEL_TIER1 = 5;
+  const LEVEL_TIER2 = 15;
+  let level = 1, lives = 3, maxHp = hpForLevel(1), hp = maxHp, busy = false;
+  let combo = 0;
+  let code10Unlocked = false, code100Unlocked = false;
+  let soundOn = true, audioCtx = null;
+
+  const monsterSvg = document.getElementById('monsterSvg');
+  const monsterStage = document.getElementById('monsterStage');
+  const gameCard = document.querySelector('.game-card');
+  const hpFill = document.getElementById('hpFill');
+  const hpLabel = document.getElementById('hpLabel');
+  const gameLevelEl = document.getElementById('gameLevel');
+  const gameMsg = document.getElementById('gameMsg');
+  const gameCombo = document.getElementById('gameCombo');
+  const livesWrap = document.getElementById('gameLives');
+  const soundToggle = document.getElementById('gameSoundToggle');
+  const soundIcon = document.getElementById('gameSoundIcon');
+
+  function hpForLevel(l){ return 16 + l * 3; }
+
+  function ensureAudio(){ if(!audioCtx){ try{ audioCtx = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } }
+  function beep(freq, dur, type){
+    if(!soundOn || !audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type || 'sine';
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0.07, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + dur);
+    osc.connect(gain); gain.connect(audioCtx.destination);
+    osc.start(); osc.stop(audioCtx.currentTime + dur);
+  }
+  function sndHit(){ beep(420 + combo*15, .07); }
+  function sndCrit(){ beep(720,.08); setTimeout(()=>beep(960,.1),60); }
+  function sndDefeat(){ beep(500,.09); setTimeout(()=>beep(700,.09),80); setTimeout(()=>beep(900,.13),160); }
+  function sndHurt(){ beep(180,.18,'sawtooth'); }
+  function sndUnlock(){ beep(600,.08); setTimeout(()=>beep(800,.08),70); setTimeout(()=>beep(1000,.14),140); }
+
+  soundToggle.addEventListener('click', () => {
+    soundOn = !soundOn;
+    soundIcon.style.color = soundOn ? 'var(--gold)' : 'var(--muted)';
+    if(soundOn) ensureAudio();
+  });
+
+  function updateHpBar(){
+    hpFill.style.width = Math.max(0,(hp/maxHp*100)) + '%';
+    hpLabel.textContent = `${Math.max(0,hp).toLocaleString('fa-IR')} / ${maxHp.toLocaleString('fa-IR')}`;
+  }
+  function updateLives(){
+    [...livesWrap.children].forEach((dot,i) => dot.classList.toggle('lost', i >= lives));
+  }
+  function updateLevel(){ gameLevelEl.textContent = level.toLocaleString('fa-IR'); }
+  function updateCombo(){ gameCombo.textContent = combo >= 3 ? `کمبو × ${combo.toLocaleString('fa-IR')}` : ''; }
+
+  function showRewardCopyBtn(codeId, copyBtnId, codeText){
+    const btn = document.getElementById(copyBtnId);
+    btn.style.display = 'flex';
+    btn.onclick = () => {
+      navigator.clipboard.writeText(codeText).then(() => {
+        btn.title = 'کپی شد';
+        btn.style.background = 'rgba(255,255,255,0.35)';
+        setTimeout(() => { btn.style.background = ''; }, 900);
+      }).catch(() => {});
+    };
+  }
+
+  function markCouponUsedInGame(code){
+    const map = { 'GOODARZI10': ['code10','copy10'], 'GOODARZI25': ['code100','copy100'] };
+    const ids = map[code];
+    if(!ids) return;
+    const codeEl = document.getElementById(ids[0]);
+    const copyBtn = document.getElementById(ids[1]);
+    codeEl.textContent = 'استفاده شد';
+    codeEl.classList.add('used');
+    copyBtn.style.display = 'none';
+  }
+
+  function unlockReward(tier){
+    if(tier === LEVEL_TIER1 && !code10Unlocked){
+      code10Unlocked = true;
+      document.getElementById('reward10').classList.add('unlocked');
+      const codeEl = document.getElementById('code10');
+      if(usedCoupons.includes('GOODARZI10')){
+        codeEl.textContent = 'استفاده شد'; codeEl.classList.add('used');
+      } else {
+        codeEl.textContent = 'GOODARZI10';
+        codeEl.classList.remove('locked');
+        showRewardCopyBtn('code10', 'copy10', 'GOODARZI10');
+      }
+      sndUnlock();
+    }
+    if(tier === LEVEL_TIER2 && !code100Unlocked){
+      code100Unlocked = true;
+      document.getElementById('reward100').classList.add('unlocked');
+      const codeEl = document.getElementById('code100');
+      if(usedCoupons.includes('GOODARZI25')){
+        codeEl.textContent = 'استفاده شد'; codeEl.classList.add('used');
+      } else {
+        codeEl.textContent = 'GOODARZI25';
+        codeEl.classList.remove('locked');
+        showRewardCopyBtn('code100', 'copy100', 'GOODARZI25');
+      }
+      sndUnlock();
+    }
+  }
+
+  function spawnDamagePop(dmg, crit){
+    const pop = document.createElement('div');
+    pop.className = 'dmg-pop' + (crit ? ' crit' : '');
+    pop.textContent = (crit ? 'کریتیکال! −' : '−') + dmg.toLocaleString('fa-IR');
+    pop.style.left = (35 + Math.random()*40) + '%';
+    pop.style.top = '28%';
+    monsterStage.appendChild(pop);
+    setTimeout(() => pop.remove(), 600);
+  }
+
+  function shakeCard(){
+    gameCard.classList.remove('shake'); void gameCard.offsetWidth; gameCard.classList.add('shake');
+  }
+
+  function retryFight(){
+    hp = maxHp; lives = 3; combo = 0;
+    monsterSvg.style.opacity = 1; monsterSvg.style.transform = 'scale(1)';
+    updateHpBar(); updateLives(); updateCombo();
+    gameMsg.className = 'game-msg';
+    gameMsg.textContent = 'دوباره امتحان کن، همین هیولا رو!';
+    busy = false;
+  }
+
+  function nextMonster(){
+    level += 1;
+    maxHp = hpForLevel(level); hp = maxHp;
+    monsterSvg.classList.remove('defeated');
+    monsterSvg.style.opacity = 1; monsterSvg.style.transform = 'scale(1)';
+    updateHpBar(); updateLevel();
+    gameMsg.className = 'game-msg';
+    gameMsg.textContent = 'هیولای بعدی اومد!';
+    busy = false;
+  }
+
+  function hitMonster(){
+    if(busy) return;
+    ensureAudio();
+    combo++;
+    const isCrit = Math.random() < 0.18;
+    let dmg = 7 + Math.floor(Math.random()*6) + Math.min(combo, 8);
+    if(isCrit) dmg = Math.round(dmg * 1.8);
+    hp -= dmg;
+    spawnDamagePop(dmg, isCrit);
+    updateCombo();
+    isCrit ? sndCrit() : sndHit();
+    monsterSvg.classList.remove('hit'); void monsterSvg.offsetWidth; monsterSvg.classList.add('hit');
+
+    // monster hits back occasionally — rare, and never past level 3 lives
+    if(Math.random() < 0.08){
+      lives -= 1;
+      combo = 0;
+      updateLives(); updateCombo();
+      shakeCard();
+      sndHurt();
+      if(lives <= 0){
+        busy = true;
+        gameMsg.className = 'game-msg lose';
+        gameMsg.textContent = 'هیولا زدت! نفس بگیر، دوباره امتحان کن.';
+        setTimeout(retryFight, 1400);
+        return;
+      }
+    }
+
+    if(hp <= 0){
+      busy = true;
+      monsterSvg.classList.add('defeated');
+      gameMsg.className = 'game-msg win';
+      gameMsg.textContent = `هیولای لول ${level.toLocaleString('fa-IR')} شکست خورد!`;
+      sndDefeat();
+      if(level === LEVEL_TIER1) unlockReward(LEVEL_TIER1);
+      if(level >= LEVEL_TIER2) unlockReward(LEVEL_TIER2);
+      setTimeout(nextMonster, 650);
+    } else{
+      updateHpBar();
+    }
+  }
+
+  monsterStage.addEventListener('pointerdown', (e) => { e.preventDefault(); hitMonster(); });
+  updateHpBar(); updateLives(); updateLevel(); updateCombo();
+
+  // ============================================================
+  // پنل مدیریت (فقط برای مدیرعامل)
+  // این یه محافظت سمت-کاربره، نه امنیت واقعی — کد داخل کد صفحه قابل دیدنه.
+  // برای امنیت واقعی و دیدن فروش از روی همه‌ی دستگاه‌ها به بک‌اند نیاز داری.
+  // ============================================================
+  const ADMIN_CODE = 'GOODARZI-CEO-2580'; // این رو عوض کن و پیش خودت نگه‌دار
+  const adminOverlay = document.getElementById('adminOverlay');
+  const adminModal = document.getElementById('adminModal');
+  let isAdmin = sessionStorage.getItem('goodarzi_admin_ok') === '1';
+
+  document.getElementById('adminOpenLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    adminOverlay.classList.add('open');
+    isAdmin ? renderAdminDashboard() : renderAdminLogin();
+  });
+  adminOverlay.addEventListener('click', (e) => { if(e.target === adminOverlay) adminOverlay.classList.remove('open'); });
+
+  function renderAdminLogin(){
+    adminModal.innerHTML = `
+      <h3>ورود مدیر</h3>
+      <p style="font-size:0.85rem; color:#5A6350; margin:8px 0 16px;">کد اختصاصی مدیرعامل رو وارد کن.</p>
+      <div class="pay-field"><input type="password" id="adminCodeInput" placeholder="کد مدیر"></div>
+      <div id="adminLoginErr" style="color:var(--ruby); font-size:0.8rem; min-height:1.2em; margin-bottom:8px;"></div>
+      <button class="pay-next" id="adminLoginBtn">ورود</button>
+    `;
+    document.getElementById('adminCodeInput').addEventListener('keydown', (e) => { if(e.key==='Enter') tryAdminLogin(); });
+    document.getElementById('adminLoginBtn').addEventListener('click', tryAdminLogin);
+  }
+  function tryAdminLogin(){
+    const val = document.getElementById('adminCodeInput').value.trim();
+    if(val === ADMIN_CODE){
+      isAdmin = true;
+      sessionStorage.setItem('goodarzi_admin_ok', '1');
+      renderAdminDashboard();
+    } else {
+      document.getElementById('adminLoginErr').textContent = 'کد اشتباهه.';
+    }
+  }
+
+  function salesBreakdown(){
+    let log = [];
+    try{ log = JSON.parse(localStorage.getItem('goodarzi_sales_log') || '[]'); }catch(e){}
+    const now = new Date();
+    const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    const startOfWeek = startOfDay - (((now.getDay()+1)%7) * 86400000); // week starts Saturday
+    const startOfYear = new Date(now.getFullYear(), 0, 1).getTime();
+    const sum = (arr) => arr.reduce((s,x) => s + x.total, 0);
+    const today = log.filter(x => x.ts >= startOfDay);
+    const week = log.filter(x => x.ts >= startOfWeek);
+    const year = log.filter(x => x.ts >= startOfYear);
+    return {
+      today: { count: today.length, total: sum(today) },
+      week: { count: week.length, total: sum(week) },
+      year: { count: year.length, total: sum(year) },
+      all: { count: log.length, total: sum(log) },
+    };
+  }
+
+  function renderAdminDashboard(){
+    const s = salesBreakdown();
+    adminModal.innerHTML = `
+      <div class="pay-step-label">پنل مدیریت</div>
+      <h3>سلام مدیرعامل</h3>
+      <div class="pay-summary" style="margin-top:14px;">
+        <div class="ps-row"><span>فروش امروز</span><span>${s.today.count} سفارش · ${formatToman(s.today.total)}</span></div>
+        <div class="ps-row"><span>فروش این هفته</span><span>${s.week.count} سفارش · ${formatToman(s.week.total)}</span></div>
+        <div class="ps-row"><span>فروش امسال</span><span>${s.year.count} سفارش · ${formatToman(s.year.total)}</span></div>
+        <div class="ps-total"><span>مجموع کل</span><span>${s.all.count} سفارش · ${formatToman(s.all.total)}</span></div>
+      </div>
+      <p style="font-size:0.76rem; color:var(--muted); margin-bottom:16px;">این آمار فقط سفارش‌هایی رو نشون می‌ده که از همین دستگاه/مرورگر ثبت شدن (چون سایت دیتابیس نداره). راهنمای کامل زیرش رو تو چت برات نوشتم.</p>
+      <button class="pay-next" id="adminEditProductsBtn">ویرایش محصولات</button>
+      <button class="pay-next" id="adminOrdersBtn" style="margin-top:10px; background:var(--gold);">سفارش‌ها</button>
+      <button class="pay-next" id="adminRegistrantsBtn" style="margin-top:10px; background:var(--sage);">ثبت‌نامی‌ها</button>
+      <a href="#" class="pay-back" id="adminLogoutBtn">خروج از پنل</a>
+    `;
+    document.getElementById('adminEditProductsBtn').addEventListener('click', renderAdminProductEditor);
+    document.getElementById('adminOrdersBtn').addEventListener('click', renderAdminOrders);
+    document.getElementById('adminRegistrantsBtn').addEventListener('click', renderAdminRegistrants);
+    document.getElementById('adminLogoutBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      isAdmin = false;
+      sessionStorage.removeItem('goodarzi_admin_ok');
+      adminOverlay.classList.remove('open');
+    });
+  }
+
+  function renderAdminProductEditor(){
+    adminModal.innerHTML = `
+      <div class="pay-step-label">پنل مدیریت</div>
+      <h3>ویرایش محصولات</h3>
+      <div id="adminProductList" style="display:flex; flex-direction:column; gap:14px; max-height:52vh; overflow-y:auto; margin:14px 0;"></div>
+      <a href="#" class="pay-back" id="adminBackToDash">بازگشت به داشبورد</a>
+    `;
+    const list = document.getElementById('adminProductList');
+    list.innerHTML = products.map(p => `
+      <div style="border:1px solid var(--line-dark); border-radius:14px; padding:12px; display:flex; gap:10px; align-items:center;">
+        <div style="width:50px;height:50px;border-radius:10px;overflow:hidden;background:#EAE1C7;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+          ${p.img ? `<img src="${p.img}" style="width:100%;height:100%;object-fit:cover;">` : p.icon}
+        </div>
+        <div style="flex:1; min-width:0;">
+          <input type="text" value="${p.name}" data-field="name" data-id="${p.id}" style="width:100%; border:1px solid var(--line-dark); border-radius:8px; padding:6px 8px; font-size:0.82rem; margin-bottom:5px; background:#EAE1C7; color:var(--ink);">
+          <div style="display:flex; gap:6px;">
+            <input type="number" value="${p.price}" data-field="price" data-id="${p.id}" style="flex:1; border:1px solid var(--line-dark); border-radius:8px; padding:6px 8px; font-size:0.8rem; background:#EAE1C7; color:var(--ink);">
+            <label style="background:var(--ink); color:var(--paper); font-size:0.72rem; padding:0 10px; border-radius:8px; display:flex; align-items:center; cursor:pointer; white-space:nowrap;">
+              عکس<input type="file" accept="image/*" data-field="img" data-id="${p.id}" style="display:none;">
+            </label>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    list.querySelectorAll('input[data-field="img"]').forEach(inp => {
+      inp.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if(!file) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+          const id = inp.dataset.id;
+          const prod = products.find(x => x.id === id);
+          prod.img = reader.result;
+          saveProductOverride(id, { img: reader.result });
+          renderProducts();
+          renderAdminProductEditor();
+        };
+        reader.readAsDataURL(file);
+      });
+    });
+    list.querySelectorAll('input[data-field="name"], input[data-field="price"]').forEach(inp => {
+      inp.addEventListener('change', () => {
+        const id = inp.dataset.id;
+        const field = inp.dataset.field;
+        const prod = products.find(x => x.id === id);
+        if(field === 'price'){
+          const val = parseInt(inp.value, 10);
+          if(!isNaN(val) && val > 0){ prod.price = val; saveProductOverride(id, { price: val }); }
+        } else {
+          if(inp.value.trim()){ prod.name = inp.value.trim(); saveProductOverride(id, { name: prod.name }); }
+        }
+        renderProducts();
+      });
+    });
+    document.getElementById('adminBackToDash').addEventListener('click', (e) => { e.preventDefault(); renderAdminDashboard(); });
+  }
+
+  function renderAdminRegistrants(){
+    let regs = [];
+    try{ regs = JSON.parse(localStorage.getItem('goodarzi_registrations') || '[]'); }catch(e){}
+    adminModal.innerHTML = `
+      <div class="pay-step-label">پنل مدیریت</div>
+      <h3>ثبت‌نامی‌ها (${regs.length})</h3>
+      <div style="display:flex; flex-direction:column; gap:10px; max-height:52vh; overflow-y:auto; margin:14px 0;">
+        ${regs.length === 0 ? '<p style="font-size:0.85rem; color:var(--muted);">هنوز کسی ثبت‌نام نکرده.</p>' : regs.slice().reverse().map(r => `
+          <div style="border:1px solid var(--line-dark); border-radius:12px; padding:10px 12px; font-size:0.84rem;">
+            <b>${r.name}</b> — <span style="direction:ltr; display:inline-block;">${r.phone}</span>
+            <div style="font-size:0.72rem; color:var(--muted); margin-top:4px;">${new Date(r.ts).toLocaleString('fa-IR')}</div>
+          </div>
+        `).join('')}
+      </div>
+      <a href="#" class="pay-back" id="adminBackToDash2">بازگشت به داشبورد</a>
+    `;
+    document.getElementById('adminBackToDash2').addEventListener('click', (e) => { e.preventDefault(); renderAdminDashboard(); });
+  }
+
+  function renderAdminOrders(){
+    let log = [];
+    try{ log = JSON.parse(localStorage.getItem('goodarzi_sales_log') || '[]'); }catch(e){}
+    adminModal.innerHTML = `
+      <div class="pay-step-label">پنل مدیریت</div>
+      <h3>سفارش‌ها (${log.length})</h3>
+      <div style="display:flex; flex-direction:column; gap:10px; max-height:52vh; overflow-y:auto; margin:14px 0;">
+        ${log.length === 0 ? '<p style="font-size:0.85rem; color:var(--muted);">هنوز سفارشی ثبت نشده.</p>' : log.slice().reverse().map(o => `
+          <div style="border:1px solid var(--line-dark); border-radius:12px; padding:12px; font-size:0.82rem;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+              <b style="font-family:var(--ff-mono); color:var(--gold);">${o.code || '—'}</b>
+              <span style="font-size:0.72rem; color:var(--muted);">${new Date(o.ts).toLocaleString('fa-IR')}</span>
+            </div>
+            ${o.buyer ? `<div>${o.buyer.name} — <span style="direction:ltr; display:inline-block;">${o.buyer.phone}</span></div>
+            <div style="font-size:0.76rem; color:var(--muted); margin:2px 0 6px;">${o.buyer.address || ''}</div>` : ''}
+            ${o.items ? `<div style="font-size:0.78rem; color:#5A6350;">${o.items.map(i=>`${i.name}×${i.qty}`).join('، ')}</div>` : ''}
+            <div style="margin-top:6px; font-weight:700;">${formatToman(o.total)}${o.coupon ? ` <span style="color:var(--sage); font-size:0.75rem;">(کد ${o.coupon})</span>` : ''}</div>
+          </div>
+        `).join('')}
+      </div>
+      <a href="#" class="pay-back" id="adminBackToDash3">بازگشت به داشبورد</a>
+    `;
+    document.getElementById('adminBackToDash3').addEventListener('click', (e) => { e.preventDefault(); renderAdminDashboard(); });
+  }
+
+  // ============================================================
+  // ثبت‌نام مشتری (هر شماره تلفن فقط یک‌بار می‌تونه ثبت‌نام کنه)
+  // ============================================================
+  const registerOverlay = document.getElementById('registerOverlay');
+  const registerModal = document.getElementById('registerModal');
+  document.getElementById('registerOpenLink').addEventListener('click', (e) => {
+    e.preventDefault();
+    registerOverlay.classList.add('open');
+    renderRegisterForm();
+  });
+  registerOverlay.addEventListener('click', (e) => { if(e.target === registerOverlay) registerOverlay.classList.remove('open'); });
+
+  function loadRegistrations(){
+    try{ return JSON.parse(localStorage.getItem('goodarzi_registrations') || '[]'); }catch(e){ return []; }
+  }
+  function saveRegistrations(list){
+    try{ localStorage.setItem('goodarzi_registrations', JSON.stringify(list)); }catch(e){}
+  }
+
+  function renderRegisterForm(){
+    registerModal.innerHTML = `
+      <h3>ثبت‌نام مشتری</h3>
+      <p style="font-size:0.85rem; color:#5A6350; margin:8px 0 16px;">با ثبت‌نام، دفعه‌ی بعد سریع‌تر خرید می‌کنی.</p>
+      <div class="pay-field"><label>اسم و فامیل</label><input type="text" id="regName" placeholder="مثلاً سارا محمدی"></div>
+      <div class="pay-field"><label>شماره تماس</label><input type="tel" id="regPhone" placeholder="09xxxxxxxxx"></div>
+      <div id="regErr" style="color:var(--ruby); font-size:0.82rem; min-height:1.2em; margin-bottom:8px;"></div>
+      <button class="pay-next" id="regSubmitBtn">ثبت‌نام</button>
+    `;
+    document.getElementById('regSubmitBtn').addEventListener('click', () => {
+      const name = document.getElementById('regName').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const errEl = document.getElementById('regErr');
+      if(!name || !phone){ errEl.textContent = 'اسم و شماره تماس رو وارد کن.'; return; }
+      const regs = loadRegistrations();
+      if(regs.some(r => r.phone === phone)){
+        errEl.textContent = 'این شماره قبلاً یه بار ثبت‌نام کرده. هر شماره فقط یک‌بار می‌تونه ثبت‌نام کنه.';
+        return;
+      }
+      regs.push({ name, phone, ts: Date.now() });
+      saveRegistrations(regs);
+      registerModal.innerHTML = `
+        <div class="pay-success">
+          <div style="width:56px; height:56px; border-radius:50%; background:var(--sage); color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin:0 auto 14px;">✓</div>
+          <h3>ثبت‌نامت انجام شد</h3>
+          <p style="font-size:0.88rem; color:#5A6350; margin-top:8px;">خوش اومدی ${name}! حالا می‌تونی خرید کنی.</p>
+          <button class="pay-next" id="regDone" style="margin-top:18px;">باشه</button>
+        </div>`;
+      document.getElementById('regDone').addEventListener('click', () => registerOverlay.classList.remove('open'));
+    });
+  }
+
+// ============================================================
+// 🦜 چیکو — دستیار هوشمند عطاری گودرزی (بدون AI واقعی، مچ محلی پیشرفته)
+// ============================================================
+document.addEventListener('DOMContentLoaded', function(){
+  const btn = document.getElementById('mascotBtn');
+  const panel = document.getElementById('mascotPanel');
+  const closeBtn = document.getElementById('mascotClose');
+  const body = document.getElementById('mascotBody');
+  const quick = document.getElementById('mascotQuick');
+  const input = document.getElementById('mascotInput');
+  const sendBtn = document.getElementById('mascotSend');
+  const badge = document.querySelector('.mascot-badge');
+  let opened = false;
+  let lastResults = [];
+
+  function fmtPrice(n){ return n.toLocaleString('fa-IR') + ' تومان'; }
+  function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+  function addMsg(text, who){
+    const el = document.createElement('div');
+    el.className = 'm-msg ' + who;
+    el.textContent = text;
+    body.appendChild(el);
+    body.scrollTop = body.scrollHeight;
+    return el;
+  }
+
+  function showTyping(){
+    const el = document.createElement('div');
+    el.className = 'm-msg bot m-typing';
+    el.innerHTML = '<span></span><span></span><span></span>';
+    body.appendChild(el);
+    body.scrollTop = body.scrollHeight;
+    return el;
+  }
+
+  function botReply(text, delay){
+    const typingEl = showTyping();
+    return new Promise(resolve=>{
+      setTimeout(()=>{
+        typingEl.remove();
+        addMsg(text, 'bot');
+        resolve();
+      }, delay || 500 + Math.random()*350);
+    });
+  }
+
+  function addSuggestions(list, delay){
+    const typingEl = showTyping();
+    setTimeout(()=>{
+      typingEl.remove();
+      lastResults = list;
+      if(list.length === 0){
+        addMsg('چیزی با این مشخصات پیدا نکردم. می‌تونی اسم دیگه‌ای بگی یا بودجه‌تو عوض کنی؟', 'bot');
+        return;
+      }
+      const wrap = document.createElement('div');
+      wrap.className = 'm-msg bot';
+      wrap.style.display = 'flex';
+      wrap.style.flexDirection = 'column';
+      wrap.style.gap = '8px';
+      wrap.style.maxWidth = '92%';
+      list.slice(0,4).forEach(p=>{
+        const card = document.createElement('div');
+        card.className = 'm-suggest-card';
+        card.innerHTML = `
+          <span><b>${p.name}</b>${p.cat}</span>
+          <span style="display:flex; align-items:center; gap:8px;">
+            <span class="m-price">${fmtPrice(p.price)}</span>
+            <button type="button" class="mascot-add-btn" data-id="${p.id}">افزودن</button>
+          </span>`;
+        wrap.appendChild(card);
+      });
+      body.appendChild(wrap);
+      body.scrollTop = body.scrollHeight;
+      wrap.querySelectorAll('.mascot-add-btn').forEach(b=>{
+        b.addEventListener('click', ()=>{
+          const p = products.find(x=> x.id === b.dataset.id);
+          if(p){ addToCart(p.id, p.name, p.price, b); b.textContent = '✓ اضافه شد'; }
+        });
+      });
+      if(list.length > 4){
+        addMsg(`${list.length - 4} تا گزینه‌ی دیگه هم هست، بگو «بیشتر نشون بده» تا ادامه‌شو ببینی.`, 'bot');
+      }
+      updateContextChips(list);
+    }, delay || 500 + Math.random()*350);
+  }
+
+  function findByBudget(amount, direction){
+    if(direction === 'above'){
+      return products.filter(p => p.price >= amount).sort((a,b)=> a.price - b.price);
+    }
+    return products.filter(p => p.price <= amount).sort((a,b)=> b.price - a.price);
+  }
+  function findByName(text){
+    const norm = s => s.replace(/[یي]/g,'ی').replace(/\s+/g,'').toLowerCase();
+    const t = norm(text);
+    return products.filter(p => norm(p.name).includes(t) || norm(p.cat).includes(t));
+  }
+
+  // number word map for spoken-style Persian budgets
+  const NUM_WORDS = {
+    'ده':10,'بیست':20,'سی':30,'چهل':40,'پنجاه':50,'شصت':60,'هفتاد':70,'هشتاد':80,'نود':90,
+    'صد':100,'دویست':200,'سیصد':300,'چهارصد':400,'پانصد':500,'پونصد':500,'ششصد':600,'هفتصد':700,'هشتصد':800,'نهصد':900,
+    'یک':1,'دو':2,'سه':3,'چهار':4,'پنج':5,'شش':6,'هفت':7,'هشت':8,'نه':9
+  };
+  function extractBudget(text){
+    const digits = text.replace(/[^\d]/g,'');
+    if(digits){
+      let n = parseInt(digits, 10);
+      if(/تومن|تومان/.test(text) === false && n < 10000) n = n * 1000;
+      return n;
+    }
+    // try spelled-out numbers, e.g. "دویست هزار تومن" or "پونصد تومن"
+    for(const word in NUM_WORDS){
+      if(text.includes(word)){
+        let n = NUM_WORDS[word];
+        if(!/هزار/.test(text) && n < 1000) n = n * 1000; // assume تومان هزارتایی وقتی هزار نیومده
+        return n;
+      }
+    }
+    return null;
+  }
+
+  function budgetDirection(text){
+    if(/به بالا|بیشتر از|بالای|بالاتر از/.test(text)) return 'above';
+    if(/کمتر از|زیر|پایین‌تر از/.test(text)) return 'below';
+    return 'below'; // پیش‌فرض: زیر بودجه
+  }
+
+  // symptom/traditional-use keyword dictionary -> canonical tags matched against product.uses
+  const SYMPTOM_MAP = [
+    { keys:['سرماخورد','سرما خورد','سرفه','آنفولانزا','گلودرد','گلو درد'], tags:['سرماخوردگی','سرفه','گلودرد'] },
+    { keys:['استرس','اضطراب','نگران','عصبی'], tags:['استرس','آرامش'] },
+    { keys:['بی‌خواب','بی خواب','خوابم نمیبره','خوابم نمی‌بره'], tags:['بی‌خوابی'] },
+    { keys:['نفخ','گوارش','دل درد','دل‌درد'], tags:['نفخ','گوارش'] },
+    { keys:['پوست','مو'], tags:['پوست','مو'] },
+    { keys:['ایمنی','آلرژی'], tags:['ایمنی بدن','آلرژی'] },
+    { keys:['فشار خون','فشارخون'], tags:['فشار خون'] },
+    { keys:['قند خون','دیابت'], tags:['قند خون'] },
+    { keys:['التهاب'], tags:['التهاب'] },
+    { keys:['تهوع','حالت تهوع'], tags:['تهوع'] },
+  ];
+  function findBySymptom(text){
+    const norm = text.replace(/[یي]/g,'ی');
+    const matchedTags = new Set();
+    SYMPTOM_MAP.forEach(entry=>{
+      if(entry.keys.some(k => norm.includes(k))){
+        entry.tags.forEach(t=> matchedTags.add(t));
+      }
+    });
+    if(matchedTags.size === 0) return [];
+    return products.filter(p => p.uses && p.uses.some(u => matchedTags.has(u)));
+  }
+
+  function isGreeting(t){ return /سلام|درود|هلو|hi\b/i.test(t); }
+  function isThanks(t){ return /ممنون|مرسی|تشکر|مچکرم/.test(t); }
+  function isDeliveryQuestion(t){ return /چطور.*(بگیرم|تحویل|دریافت)|تحویل بگیرم|چجوری.*(ارسال|تحویل)/.test(t); }
+  function isMore(t){ return /بیشتر|ادامه/.test(t); }
+  function isCheaper(t){ return /ارزون|ارزان تر|ارزون‌تر/.test(t); }
+  function isExpensive(t){ return /گرون|گران تر|گرون‌تر|بهتر/.test(t); }
+
+  function updateContextChips(list){
+    quick.innerHTML = '';
+    const chipSet = [];
+    if(list.length > 4) chipSet.push('بیشتر نشون بده');
+    if(list.length > 0) chipSet.push('ارزون‌تر', 'گرون‌تر');
+    chipSet.push('یه دسته دیگه');
+    chipSet.forEach(c=>{
+      const b = document.createElement('button');
+      b.textContent = c;
+      b.addEventListener('click', ()=> handleUserInput(c));
+      quick.appendChild(b);
+    });
+  }
+
+  async function handleUserInput(text){
+    if(!text.trim()) return;
+    addMsg(text, 'user');
+    input.value = '';
+
+    if(isGreeting(text)){
+      await botReply(pick(['سلام! خوش اومدی 🦜', 'سلام سلام، چه کمکی از دستم برمیاد؟']));
+      return;
+    }
+    if(isThanks(text)){
+      await botReply(pick(['خواهش می‌کنم، خوشحال شدم کمک کردم 🌿', 'قربونت، هر وقت خواستی دوباره بپرس.']));
+      return;
+    }
+    if(isDeliveryQuestion(text)){
+      await botReply(`برای هماهنگی تحویل محصول، می‌تونی با این شماره‌ها تماس بگیری: ${WHATSAPP_NUMBER.replace('98','0')} یا ${SECOND_PHONE.replace('98','0')}`);
+      return;
+    }
+    if(isMore(text) && lastResults.length > 4){
+      addSuggestions(lastResults.slice(4, 8));
+      return;
+    }
+    if(isCheaper(text) && lastResults.length > 0){
+      const cheaper = [...lastResults].sort((a,b)=> a.price - b.price);
+      await botReply('اینا ارزون‌ترین‌هاشونن:');
+      addSuggestions(cheaper);
+      return;
+    }
+    if(isExpensive(text) && lastResults.length > 0){
+      const pricier = [...products].sort((a,b)=> b.price - a.price);
+      await botReply('این‌ها هم گزینه‌های باکیفیت‌تر و بالاترن:');
+      addSuggestions(pricier);
+      return;
+    }
+    if(text.includes('دسته دیگه')){
+      const cats = [...new Set(products.map(p=>p.cat))];
+      await botReply('این دسته‌ها رو داریم: ' + cats.join('، ') + ' — کدومشو می‌خوای؟');
+      return;
+    }
+
+    const budget = extractBudget(text);
+    const direction = budgetDirection(text);
+    const nameMatches = findByName(text);
+    const symptomMatches = findBySymptom(text);
+
+    if(symptomMatches.length > 0){
+      const scoped = budget ? symptomMatches.filter(p => direction === 'above' ? p.price >= budget : p.price <= budget) : symptomMatches;
+      await botReply('بر اساس کاربرد سنتی گیاهان، این‌ها می‌تونن کمک کنن (این یه توصیه پزشکی نیست، برای مشکل جدی حتماً با پزشک مشورت کن):');
+      addSuggestions(scoped.length ? scoped : symptomMatches);
+      return;
+    }
+
+    if(budget && nameMatches.length > 0){
+      const combined = direction === 'above' ? nameMatches.filter(p => p.price >= budget) : nameMatches.filter(p => p.price <= budget);
+      await botReply(`با بودجه ${direction === 'above' ? 'حداقل' : 'حداکثر'} ${fmtPrice(budget)} از بین «${text}» این‌ها رو داریم:`);
+      addSuggestions(combined.length ? combined : nameMatches);
+      return;
+    }
+    if(budget){
+      await botReply(`با بودجه ${direction === 'above' ? 'حداقل' : 'حداکثر'} ${fmtPrice(budget)} این گزینه‌ها موجوده:`);
+      addSuggestions(findByBudget(budget, direction));
+      return;
+    }
+    if(nameMatches.length > 0){
+      await botReply(pick(['پیدا کردم، بفرما:', 'اینا رو داریم:']));
+      addSuggestions(nameMatches);
+      return;
+    }
+    await botReply('می‌تونی علامت/نیازت رو بگی (مثلاً «برای سرماخوردگی چی خوبه»)، اسم محصول، یا بودجه‌ت رو بگی (مثلاً «۲۰۰ تومن دارم» یا «بالای ۱ میلیون») تا برات پیدا کنم.');
+  }
+
+  function setupQuickReplies(){
+    quick.innerHTML = '';
+    const cats = [...new Set(products.map(p=>p.cat))].slice(0,3);
+    const chips = ['برای سرماخوردگی', 'زیر ۱۰۰ تومن', ...cats.slice(0,2)];
+    chips.forEach(c=>{
+      const b = document.createElement('button');
+      b.textContent = c;
+      b.addEventListener('click', ()=> handleUserInput(c === 'زیر ۱۰۰ تومن' ? '100000' : c));
+      quick.appendChild(b);
+    });
+  }
+
+  function openPanel(){
+    panel.classList.add('open');
+    opened = true;
+    if(badge) badge.style.display = 'none';
+    if(body.children.length === 0){
+      addMsg('سلام! من چیکو‌ام 🦜 دستیار عطاری گودرزی. می‌تونی بگی دنبال چه علامتی هستی (مثلاً سرماخوردگی)، چه محصولی می‌خوای، یا بودجه‌ت چقدره — من بهترین گزینه رو پیدا می‌کنم.', 'bot');
+      setupQuickReplies();
+    }
+  }
+  function closePanel(){ panel.classList.remove('open'); }
+
+  btn.addEventListener('click', ()=> opened && panel.classList.contains('open') ? closePanel() : openPanel());
+  closeBtn.addEventListener('click', closePanel);
+  sendBtn.addEventListener('click', ()=> handleUserInput(input.value));
+  input.addEventListener('keydown', (e)=>{ if(e.key === 'Enter') handleUserInput(input.value); });
+
+  // image upload — Chico can't actually analyze image content (no real vision AI connected),
+  // so we're honest about that and just acknowledge receipt + ask for a text description.
+  const imageInput = document.getElementById('mascotImageInput');
+  if(imageInput){
+    imageInput.addEventListener('change', (e)=>{
+      const file = e.target.files[0];
+      if(!file) return;
+      const reader = new FileReader();
+      reader.onload = function(ev){
+        const imgWrap = document.createElement('div');
+        imgWrap.className = 'm-msg user';
+        imgWrap.style.padding = '6px';
+        imgWrap.innerHTML = `<img src="${ev.target.result}" style="max-width:160px; border-radius:10px; display:block;">`;
+        body.appendChild(imgWrap);
+        body.scrollTop = body.scrollHeight;
+        botReply('عکست رسید 📷 چون هنوز نمی‌تونم محتوای عکس رو واقعاً تحلیل کنم، بگو دنبال چه محصولی هستی تا برات پیدا کنم — یا می‌تونی همین عکس رو مستقیم توی واتساپ برامون بفرستی که یه نفر واقعی نگاش کنه.');
+      };
+      reader.readAsDataURL(file);
+      imageInput.value = '';
+    });
+  }
+});
+</script>
+<button class="mascot-btn" id="mascotBtn" aria-label="چت با چیکو">
+  <span class="mascot-badge">۱</span>
+  <svg viewBox="0 0 100 100" fill="none">
+    <ellipse cx="50" cy="58" rx="26" ry="22" fill="#F2E6C8"/>
+    <circle cx="50" cy="34" r="18" fill="#F2E6C8"/>
+    <path d="M50 14c6 0 10 6 8 12-5-2-11-2-16 0-2-6 2-12 8-12z" fill="#E8A63C"/>
+    <circle cx="43" cy="32" r="3" fill="#2E3C29"/>
+    <path d="M50 36l8 4-8 3z" fill="#E8763C"/>
+    <circle cx="34" cy="30" r="6" fill="#E8763C" opacity="0.7"/>
+    <path d="M28 55c-10 2-16 10-14 20 8-2 16-8 18-16z" fill="#D9C48A"/>
+  </svg>
+</button>
+
+<div class="mascot-panel" id="mascotPanel">
+  <div class="mascot-head">
+    <svg viewBox="0 0 100 100" fill="none">
+      <ellipse cx="50" cy="58" rx="26" ry="22" fill="#F2E6C8"/>
+      <circle cx="50" cy="34" r="18" fill="#F2E6C8"/>
+      <path d="M50 14c6 0 10 6 8 12-5-2-11-2-16 0-2-6 2-12 8-12z" fill="#E8A63C"/>
+      <circle cx="43" cy="32" r="3" fill="#2E3C29"/>
+      <path d="M50 36l8 4-8 3z" fill="#E8763C"/>
+      <circle cx="34" cy="30" r="6" fill="#E8763C" opacity="0.7"/>
+    </svg>
+    <div class="h-info">
+      <div class="h-title">چیکو 🦜</div>
+      <div class="h-sub">دستیار هوشمند عطاری گودرزی</div>
+    </div>
+    <button class="mascot-close" id="mascotClose" aria-label="بستن">×</button>
+  </div>
+  <div class="mascot-body" id="mascotBody"></div>
+  <div class="mascot-quick" id="mascotQuick"></div>
+  <div class="mascot-input-row">
+    <label style="width:38px; height:38px; border-radius:50%; background:var(--paper-dim); display:flex; align-items:center; justify-content:center; flex-shrink:0; cursor:pointer;" aria-label="ارسال عکس">
+      📷<input type="file" id="mascotImageInput" accept="image/*" style="display:none;">
+    </label>
+    <input type="text" id="mascotInput" placeholder="مثلاً: بودجه ۲۰۰ تومن دارم، یا اسم محصول...">
+    <button class="mascot-send" id="mascotSend" aria-label="ارسال">➤</button>
+  </div>
+</div>
+
+</body>
+</html>
